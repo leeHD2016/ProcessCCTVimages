@@ -5,10 +5,10 @@
 
 varDate=$(date -d yesterday +%Y%m%d) #set the variable as yesterday.
 
-mkdir -p /home/camera140/videos/$varDate/originals
+mkdir -p /home/camera140/videos/$varDate/originals #Create dir to house original snapshots
 
-find /home/camera140/uploads -name "*$varDate*.jpg" -exec mv '{}' /home/camera140/videos/$varDate/originals \;
-cd /home/camera140/videos/$varDate/originals
+find /home/camera140/uploads -name "*$varDate*.jpg" -exec mv '{}' /home/camera140/videos/$varDate/originals \; #find all jpegs created yesterday and move them to the dir created above.
+cd /home/camera140/videos/$varDate/originals 
 
 for name in *.jpg; do
     convert "$name" -font courier -pointsize 20 -draw "gravity south fill black text 0,12 '$name' fill white text 1,11 '$name'" "$name";
